@@ -3,13 +3,24 @@
      <div class="card">
   <div class="card-body">
       
-    <h5 class="card-title text-start"><img :src="post.creator.picture" alt="" class="profile-img selectable m-2">{{post.creator.name}}</h5>
+    <h5 class="card-title text-start">
+      <router-link :to="{name: 'Profile', params: {id: post.creatorId}}">
+        <img :src="post.creator.picture" alt="" class="profile-img selectable m-2">
+      </router-link>
+        {{post.creator.name}}</h5>
     <p class="card-text">{{post.body}}</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    <p class="card-text"><small class="text-muted">{{post.createdAt}}</small></p>
+    <div class="text-end">
+    <i class="mdi mdi-thumb-up-outline"></i>
+  {{post.likes.length}}
+
+    </div>
   </div>
   <img v-if="post.imgUrl !== ''" :src="post.imgUrl" class="card-img-bottom" alt="...">
+  
 </div>
     </div>
+      <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
 </template>
 
 

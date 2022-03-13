@@ -11,6 +11,13 @@ class PostsService{
         AppState.posts = res.data.posts
     }
 
+    // async changePage() {
+    //     const res = await api.get('api/posts')
+    //     AppState.posts = res.data.posts
+    //     AppState.olderPages = res.data.older
+    //     AppState.newPages = res.data.newer
+    // }
+
 }
 
 export const postsService = new PostsService()
