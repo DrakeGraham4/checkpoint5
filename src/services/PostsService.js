@@ -11,12 +11,17 @@ class PostsService{
         AppState.posts = res.data.posts
     }
 
-    // async changePage() {
-    //     const res = await api.get('api/posts')
-    //     AppState.posts = res.data.posts
-    //     AppState.olderPages = res.data.older
-    //     AppState.newPages = res.data.newer
-    // }
+    async createPost(postData) {
+        const res = await api.post('api/posts', postData)
+        logger.log('post data', res.data)
+        AppState.posts.unshift(res.data)
+    }
+
+     async remove(id) {
+    await api.delete('api/posts/' + id)
+    AppState.posts = AppState.posts.filter(p => p.id !== id)
+  }
+
 
 }
 

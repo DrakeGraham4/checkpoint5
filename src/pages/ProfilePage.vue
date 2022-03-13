@@ -6,7 +6,14 @@
         class="profile-img rounded-circle elevation-4"
         :src="profile.picture"
       />
-      <h1>{{ profile.name }}</h1>
+      <h2 class="d-flex">{{ profile.name }}
+          <i
+            v-if="account.id == profile.id"
+            data-bs-toggle="modal"
+            data-bs-target="#edit-profile"
+            class="mdi mdi-pencil selectable ps-5"
+          ></i>
+      </h2>
       <p>
         {{ profile.bio }}
         
@@ -19,14 +26,15 @@
 
       <ul>
           
-          <p>Class: {{ profile.class }}</p>
-          <p>Email: {{ profile.email }}</p>
-          <p v-if="profile.github">GitHub: {{profile.github}} </p>
+          <p v-if="profile.class">Class: {{ profile.class }}</p>
+          <p v-if="profile.email">Email: {{ profile.email }}</p>
           <p v-if="profile.linkedin">LinkedIn: {{ profile.linkedin }}</p>
+          <p v-if="profile.github">GitHub: {{profile.github}} </p>
         </ul>
         
          
       
+    
     </div>
 
     <div class="profile container-fluid text-center">
@@ -36,7 +44,12 @@
       </div>
     </div>
     </div>
+    <Modal id="edit-profile">
+      <template #title> Edit Account</template>
+      <template #body><EditAccountForm /> </template>
+    </Modal>
     </div>
+    
         
           <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
 </template>

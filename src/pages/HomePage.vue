@@ -7,6 +7,7 @@
         <Search />
       </div>
     </div>
+    <CreatePost />
     <div class="m-4 p-2">
       <div v-for="p in posts" :key="p.id" class="col-md-5 text-center">
         <Post :post="p"/>

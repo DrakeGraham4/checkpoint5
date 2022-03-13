@@ -13,6 +13,7 @@
     <div class="text-end">
     <i class="mdi mdi-thumb-up-outline"></i>
   {{post.likes.length}}
+  <i @click="remove" class="mdi mdi-delete"></i>
 
     </div>
   </div>
@@ -27,6 +28,9 @@
 
 
 <script>
+import { postsService } from '../services/PostsService';
+import Pop from '../utils/Pop';
+
 export default {
     props:{
         post: {
@@ -34,10 +38,30 @@ export default {
             required: true
         },
     },
-    setup(){
-        return {}
+    setup(props){
+        return {
+      async remove() {
+        try {
+           if (
+            await Pop.confirm(
+              "are you sure you want to delete this post?",
+              "",
+              "info",
+              "Yes"
+            )
+          ) 
+          await postsService.remove(props.post.id);
+        } catch (error) {
+          Pop.toast(error.message, "error");
+          
+        }
+      },
+    };
+
+
+        }
     }
-}
+
 </script>
 
 
