@@ -5,8 +5,15 @@
     <!-- <button @click="getMyProfile()"> My Profile
     
     </button> -->
+    <router-link :to="{
+      name: 'Profile', 
+      params: { id: account.id} }">
+    <h5 class="text-dark p-2"> Go To Your Profile</h5>
+    </router-link>
+
     
-    <div class="row">
+    
+    <div class="">
       <div class="col-12">
         <Search />
       </div>
@@ -46,6 +53,7 @@ export default {
     });
     return{
       posts: computed(() => AppState.posts),
+      account: computed(() => AppState.account)
       
     }
   }

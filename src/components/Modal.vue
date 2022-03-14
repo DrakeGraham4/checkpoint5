@@ -7,7 +7,7 @@
     aria-hidden="true"
   >
     <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content bg-transparent border-0 text-light">
+      <div class="modal-content border-0 text-dark">
         <div class="modal-header">
           <h5 class="modal-title">
             <slot name="title"></slot>

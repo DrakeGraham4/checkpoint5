@@ -9,6 +9,7 @@
       </router-link>
         {{post.creator.name}}</h5>
     <p class="card-text">{{post.body}}</p>
+    <!-- FIXME see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date || https://stackoverflow.com/questions/29111401/how-to-convert-date-from-mongodb-to-javascript-or-jquery -->
     <p class="card-text"><small class="text-muted">{{post.createdAt}}</small></p>
     <div class="text-end">
     <i @click="likePost()" class="mdi mdi-thumb-up-outline selectable"></i>
@@ -17,7 +18,7 @@
 
     </div>
   </div>
-  <img v-if="post.imgUrl !== ''" :src="post.imgUrl" class="card-img-bottom" alt="...">
+  <img v-if="post.imgUrl" :src="post.imgUrl" class="card-img-bottom" alt="...">
   
 </div>
     </div>
