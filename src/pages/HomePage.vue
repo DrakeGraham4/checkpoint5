@@ -2,9 +2,9 @@
 
   <!-- <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center"> -->
     <!-- <button @click="changePage()"></button> -->
-    <button @click="getMyProfile()"> My Profile
+    <!-- <button @click="getMyProfile()"> My Profile
     
-    </button>
+    </button> -->
     
     <div class="row">
       <div class="col-12">
@@ -16,6 +16,9 @@
       <div v-for="p in posts" :key="p.id" class="col-md-5 text-center">
         <Post :post="p"/>
       </div>
+    </div>
+    <div class="col-2">
+      <Ad />
     </div>
   <!-- </div> -->
 </template>

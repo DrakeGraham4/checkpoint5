@@ -1,39 +1,44 @@
 <template>
-        <div class="row justify-content-center">
+        <div class="p-2">
 
-    <div class="col-4 mt-3 mb-0">
+    
+    
+    
+    
+    
+    
+    <div class="col-12 mt-3 mb-0">
+      <img class="cover-img d-flex" :src="profile.coverImg" alt="">
+      <div v-if="account.id == profile.id"> Edit Profile
+          <i  data-bs-toggle="modal"
+            data-bs-target="#edit-profile"
+            class="mdi mdi-pencil selectable"
+          ></i>
+
+      </div>
       <img
-        class="profile-img rounded-circle elevation-4"
+        class="profile-img rounded-circle"
         :src="profile.picture"
       />
-      <h2 class="d-flex">{{ profile.name }}
-          <i v-if="account.id == profile.id" data-bs-toggle="modal"
-            data-bs-target="#edit-profile"
-            class="mdi mdi-pencil selectable ps-5"
-          ></i>
-      </h2>
-      <p>
-        {{ profile.bio }}
-        
-      </p>
-      <a
-        v-if="profile.github"
-        
-        :href="profile.github"
-      ></a>
-
       <ul>
-          
+      <h2 class="">{{ profile.name }}
+      </h2>
+      <p v-if="profile.bio">Bio: {{ profile.bio }}</p>
           <p v-if="profile.class">Class: {{ profile.class }}</p>
           <p v-if="profile.email">Email: {{ profile.email }}</p>
           <p v-if="profile.linkedin">LinkedIn: {{ profile.linkedin }}</p>
           <p v-if="profile.github">GitHub: {{profile.github}} </p>
+          
+
+          
+          
         </ul>
+          
         
          
-      <CreatePost v-if="account.id == profile.id" />
     
     </div>
+      <CreatePost v-if="account.id == profile.id" />
 
     <div class="profile container-fluid text-center">
          <div class="row justify-content-center">
@@ -88,5 +93,13 @@ export default {
 
 
 <style lang="scss" scoped>
+.cover-img{
+  
+  max-width: 100%;
+}
+.profile-img{
+  
+}
+
 
 </style>

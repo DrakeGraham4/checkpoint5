@@ -1,9 +1,31 @@
 <template>
   <form class="d-flex flex-column p-5 bg-dark">
-    <label for="">name</label>
+    <label for="Name">Name</label>
     <input v-model="editable.name" type="text" />
-    <label for="">img</label>
+
+    <label for="Class">Class</label>
+    <input v-model="editable.class" type="text" />
+
+    <label for="Profile Picture">Profile Image</label>
     <input v-model="editable.picture" type="text" />
+
+    <label for="Bio">Bio</label>
+    <input v-model="editable.bio" type="text" />
+
+    <label for="Cover Photo">Cover Photo</label>
+    <input v-model="editable.coverImg" type="text" />
+
+    
+    <label for="Social Media">Github</label>
+    <input v-model="editable.github" type="text" />
+
+    <label for="">LinkedIn</label>
+    <input v-model="editable.linkedin" type="text" />
+    
+    <label for="Graduated">Alumni Status</label>
+    <input v-model="editable.graduated" type="text" />
+    
+    
     <button type="button" class="btn btn-primary" @click="editAccount">Edit</button>
   </form>
 </template>

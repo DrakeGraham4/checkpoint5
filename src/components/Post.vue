@@ -57,10 +57,7 @@ export default {
         try {
            if (
             await Pop.confirm(
-              "are you sure you want to delete this post?",
-              "",
-              "info",
-              "Yes"
+              "Delete this Post?", "This action cannot be reversed", "warning", "Absolutely"
             )
           ) 
           await postsService.remove(props.post.id);
