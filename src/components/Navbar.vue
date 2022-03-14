@@ -11,6 +11,9 @@
        <div class="text-dark">InstaGraham</div> 
       </div>
     </router-link>
+
+      
+
     <button
       class="navbar-toggler"
       type="button"

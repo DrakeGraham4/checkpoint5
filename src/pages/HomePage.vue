@@ -2,12 +2,16 @@
 
   <!-- <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center"> -->
     <!-- <button @click="changePage()"></button> -->
+    <button @click="getMyProfile()"> My Profile
+    
+    </button>
+    
     <div class="row">
       <div class="col-12">
         <Search />
       </div>
     </div>
-    <CreatePost />
+    
     <div class="m-4 p-2">
       <div v-for="p in posts" :key="p.id" class="col-md-5 text-center">
         <Post :post="p"/>
@@ -30,7 +34,7 @@ export default {
     onMounted(async ()=> {
       try {
         await postsService.getAll();
-        // await postsService.changePage()
+        
       } catch (error) {
         logger.log(error);
         Pop.toast(error.message, 'error')
@@ -39,8 +43,7 @@ export default {
     });
     return{
       posts: computed(() => AppState.posts),
-      // olderPages: computed(() => AppState.olderPages),
-      // newPages: computed(() => AppState.newPages)
+      
     }
   }
 }

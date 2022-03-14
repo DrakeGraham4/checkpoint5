@@ -17,6 +17,11 @@ class PostsService{
         AppState.posts.unshift(res.data)
     }
 
+    async likePost(id) {
+        await api.post(`api/posts/${id}/like`)
+        this.getAll()
+    }
+
      async remove(id) {
     await api.delete('api/posts/' + id)
     AppState.posts = AppState.posts.filter(p => p.id !== id)

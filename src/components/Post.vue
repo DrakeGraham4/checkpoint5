@@ -11,9 +11,9 @@
     <p class="card-text">{{post.body}}</p>
     <p class="card-text"><small class="text-muted">{{post.createdAt}}</small></p>
     <div class="text-end">
-    <i class="mdi mdi-thumb-up-outline"></i>
+    <i @click="likePost()" class="mdi mdi-thumb-up-outline selectable"></i>
   {{post.likes.length}}
-  <i @click="remove" class="mdi mdi-delete"></i>
+  <i v-if="account.id == post.creatorId" @click="remove" class="mdi mdi-delete"></i>
 
     </div>
   </div>
@@ -28,8 +28,11 @@
 
 
 <script>
+import { computed } from '@vue/reactivity';
 import { postsService } from '../services/PostsService';
+import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
+import { AppState } from '../AppState';
 
 export default {
     props:{
@@ -40,6 +43,16 @@ export default {
     },
     setup(props){
         return {
+
+          async likePost(){
+            try {
+              await postsService.likePost(props.post.id)
+            } catch (error) {
+              Pop.toast(error.message)
+              logger.log('error')
+            }
+          },
+
       async remove() {
         try {
            if (
@@ -56,6 +69,7 @@ export default {
           
         }
       },
+      account: computed(()=> AppState.account)
     };
 
 

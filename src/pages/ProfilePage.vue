@@ -7,9 +7,7 @@
         :src="profile.picture"
       />
       <h2 class="d-flex">{{ profile.name }}
-          <i
-            v-if="account.id == profile.id"
-            data-bs-toggle="modal"
+          <i v-if="account.id == profile.id" data-bs-toggle="modal"
             data-bs-target="#edit-profile"
             class="mdi mdi-pencil selectable ps-5"
           ></i>
@@ -33,7 +31,7 @@
         </ul>
         
          
-      
+      <CreatePost v-if="account.id == profile.id" />
     
     </div>
 
@@ -73,6 +71,7 @@ export default {
           await profilesService.getProfile(route.params.id);
           await postsService.getAll({ creatorId: route.params.id });
         }
+        
       } catch (error) {
         logger.error(error);
         Pop.toast(error.message, "error");
