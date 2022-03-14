@@ -27,6 +27,10 @@
     <div class="col-2">
       <Ad />
     </div>
+    <button v-if="olderPage" class="btn btn-primary p-2"
+    @click="changePage(olderPage)">Next</button>
+    <button v-if="newPage" class="btn btn-primary p-2"
+    @click="changePage(newPage)">Previous</button>
   <!-- </div> -->
 </template>
     
@@ -53,8 +57,20 @@ export default {
     });
     return{
       posts: computed(() => AppState.posts),
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      olderPage: computed(()=> AppState.olderPage),
+      newPage: computed(() => AppState.newPage),
       
+      
+    async changePage(page){
+      try {
+        logger.log(page, 'PAGE')
+        await postsService.changePage(page);
+      } catch (error) {
+        logger.error(error)
+        Pop.toast('error')
+      }
+    }
     }
   }
 }
