@@ -53,10 +53,10 @@
     </Modal>
     </div>
 
-    <button v-if="olderPage" class="btn btn-primary p-2"
-    @click="changePage(olderPage)">Next</button>
-    <button v-if="newPage" class="btn btn-primary p-2"
+    <button v-if="newPage" class="btn btn-primary p-2 m-2"
     @click="changePage(newPage)">Previous</button>
+    <button v-if="olderPage" class="btn btn-primary p-2 m-2"
+    @click="changePage(olderPage)">Next</button>
     
         
           <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">

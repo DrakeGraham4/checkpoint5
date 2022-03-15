@@ -27,10 +27,10 @@
     <div class="col-2">
       <Ad />
     </div>
-    <button v-if="olderPage" class="btn btn-primary p-2"
-    @click="changePage(olderPage)">Next</button>
-    <button v-if="newPage" class="btn btn-primary p-2"
+    <button v-if="newPage" class="btn btn-primary p-2 m-2"
     @click="changePage(newPage)">Previous</button>
+    <button v-if="olderPage" class="btn btn-primary p-2 m-2"
+    @click="changePage(olderPage)">Next</button>
   <!-- </div> -->
 </template>
     
