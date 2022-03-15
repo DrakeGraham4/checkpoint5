@@ -52,6 +52,11 @@
       <template #body><EditAccountForm /> </template>
     </Modal>
     </div>
+
+    <button v-if="olderPage" class="btn btn-primary p-2"
+    @click="changePage(olderPage)">Next</button>
+    <button v-if="newPage" class="btn btn-primary p-2"
+    @click="changePage(newPage)">Previous</button>
     
         
           <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
@@ -86,6 +91,18 @@ export default {
       posts: computed(() => AppState.posts),
       profile: computed(() => AppState.profile),
       account: computed(() => AppState.account),
+      olderPage: computed(()=> AppState.olderPage),
+      newPage: computed(() => AppState.newPage),
+
+      async changePage(page){
+      try {
+        logger.log(page, 'PAGE')
+        await postsService.changePage(page);
+      } catch (error) {
+        logger.error(error)
+        Pop.toast('error')
+      }
+    }
     };
   },
 };
