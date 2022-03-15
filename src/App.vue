@@ -5,7 +5,7 @@
   <main>
     
     <router-view />
-    <billboards v-for="b in billboards" :key="b.title" :billbaords="b" />
+    
       
   </main>
   <footer>
@@ -20,12 +20,12 @@ import { computed } from 'vue'
 import { AppState } from './AppState'
 import Billboards from './components/Billboards.vue'
 export default {
-  components: { Billboards },
+  
   name: 'App',
   setup() {
     return {
       appState: computed(() => AppState),
-      billboards: computed(()=> AppState.billboards)
+      
     }
   }
 }
